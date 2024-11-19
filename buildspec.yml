@@ -1,42 +1,15 @@
 version: 0.2
-
-# Define the phases of the build process
 phases:
-  # Install dependencies (if needed)
   install:
-    runtime-versions:
-      # Define your runtime version (e.g., Node.js, Python)
-      # Example: Node.js version
-      nodejs: 14
     commands:
-      # Any custom install commands, if needed
-      echo Installing dependencies...
-      npm install   # If using Node.js, replace with your dependency manager commands
-
-  # Pre-build phase (if you need to do something before the build)
-  pre_build:
-    commands:
-      echo Preparing for build...
-      # You can add commands like tests or environment setup if needed
-
-  # Build phase (this is where the actual build happens)
+      - echo Installing dependencies...
+      - npm install
   build:
     commands:
-      echo Building the application...
-      npm run build  # Example: build command for a Node.js app; replace with your own
-
-  # Post-build phase (optional cleanup or commands after the build)
-  post_build:
-    commands:
-      echo Build completed successfully!
-
-# Specify the artifacts to be included in the build output
+      - echo Building the application...
+      - npm run build
 artifacts:
-  # Specify where the artifact files are located in the build directory
-  base-directory: dist   # Assuming dist/ is the directory containing your build output
   files:
-    - appspec.yml          # Include the appspec.yml file
-    - scripts/**/*         # Include all files from the scripts/ directory
-    - dist/**/*             # Include everything in the dist/ directory
+    - '**/*'
+  base-directory: dist
 
-# Optionally, you can specify additional settings for the build, such as environment variables:
