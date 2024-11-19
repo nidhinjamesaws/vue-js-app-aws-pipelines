@@ -10,6 +10,8 @@ phases:
       - npm run build
 artifacts:
   files:
+    - appspec.yml            # Include the appspec.yml file
+    - scripts/**/*           # Include everything inside the scripts/ directory
     - '**/*'
   base-directory: dist
 
