@@ -1,20 +1,20 @@
 version: 0.0
 os: linux
 files:
-  - source: /dist/
+  - source: dist/
     destination: /var/www/web/
-  - source: /appspec.yml
-    destination: /tmp/appspec.yml
-  - source: /scripts/install_dependencies.sh
-    destination: /tmp/scripts/install_dependencies.sh
-  - source: /scripts/start_server.sh
-    destination: /tmp/scripts/start_server.sh
+  - source: appspec.yml
+    destination: appspec.yml
+  - source: scripts/install_dependencies.sh
+    destination: scripts/install_dependencies.sh
+  - source: scripts/start_server.sh
+    destination: scripts/start_server.sh
 hooks:
   AfterInstall:
-    - location: /tmp/scripts/install_dependencies.sh
+    - location: scripts/install_dependencies.sh
       timeout: 300
       runas: root
   ApplicationStart:
-    - location: /tmp/scripts/start_server.sh
+    - location: scripts/start_server.sh
       timeout: 300
       runas: root
