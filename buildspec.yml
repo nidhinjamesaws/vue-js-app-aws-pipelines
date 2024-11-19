@@ -12,3 +12,4 @@ artifacts:
   files:
     - appspec.yml
     - dist/**/*
+    - scripts/**/*
