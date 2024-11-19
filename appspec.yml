@@ -1,22 +1,20 @@
 version: 0.0
 os: linux
 files:
-  - source: / # Source location in the deployment package
-    destination: /var/www/web/ # Destination directory on the target instance
-    overwrite: yes # Optional: Overwrites existing files
-
+  - source: /dist/
+    destination: /var/www/web/
+  - source: /appspec.yml
+    destination: /tmp/appspec.yml
+  - source: /scripts/install_dependencies.sh
+    destination: /tmp/scripts/install_dependencies.sh
+  - source: /scripts/start_server.sh
+    destination: /tmp/scripts/start_server.sh
 hooks:
-  BeforeInstall:
-    - location: scripts/install_dependencies.sh
-      timeout: 300
-      runas: root
-
   AfterInstall:
-    - location: scripts/set_permissions.sh
+    - location: /tmp/scripts/install_dependencies.sh
       timeout: 300
       runas: root
-
   ApplicationStart:
-    - location: scripts/start_server.sh
+    - location: /tmp/scripts/start_server.sh
       timeout: 300
       runas: root
