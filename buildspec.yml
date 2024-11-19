@@ -40,13 +40,3 @@ artifacts:
     - dist/**/*             # Include everything in the dist/ directory
 
 # Optionally, you can specify additional settings for the build, such as environment variables:
-env:
-  variables:
-    KEY: "value"  # Define any environment variables here if needed
-  parameter-store:
-    MY_SECRET: "/path/to/secret"  # Optionally, pull values from the AWS Systems Manager Parameter Store
-
-# Optionally, you can configure cache to speed up future builds:
-cache:
-  paths:
-    - node_modules/**/*  # If using Node.js, cache node_modules for faster builds
